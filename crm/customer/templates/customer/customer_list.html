@@ -2,7 +2,13 @@
 
 {% block content %}
     <h2>Clientes</h2>
-    <table class="table table-bordered">
+    <form>
+        <div class="form-group mb-1">
+            <input class="form-control" type="text" name="find_by_name" placeholder="Buscar por nome...">
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+    <table class="table table-bordered mt-4">
         <thead>
             <tr>
                 <th>Nome</th>
