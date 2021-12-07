@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from .secret import DJANGO_SECRET_KEY, CORE_TEMPLATE_DIR
+from .secret import DJANGO_SECRET_KEY, CORE_TEMPLATE_DIR, POSTGRES_DB_PASSWORD
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'crm.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'gestaoclientesDIO',
+        'USER': 'postgres',
+        'PASSWORD': POSTGRES_DB_PASSWORD,
+        'HOST': 'localhost',
+        'PORT': '5433',
     }
 }
 
@@ -132,4 +136,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'login'
-LOGOUT_REDIRECT_URL = 'login'
+

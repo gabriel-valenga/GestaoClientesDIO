@@ -4,6 +4,7 @@ from .forms import CustomerForm
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 
 class CustomerListView(ListView):

@@ -2,10 +2,16 @@
     <a class="navbar-brand" href="{% url 'index' %}"> CRM </a>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'customer:customer-list' %}">Clientes</a>
+            {% if user.is_authenticated %}
+                <a class="nav-link" href="{% url 'customer:customer-list' %}">Clientes</a>
+            {% endif %}
         </li>
     </ul>
     <div style="width:100%">
-        <a class="navbar-brand" href="{% url 'logout' %}" style="float:right">Sair</a>
+        {% if user.is_authenticated %}
+            <a class="navbar-brand" href="{% url 'logout' %}" style="float:right">Sair</a>
+        {% else %}
+            <a class="navbar-brand" href="{% url 'login' %}" style="float:right">Entrar</a>
+        {% endif %}
     </div>
 </nav>
