@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os.path
 from pathlib import Path
-from .secret import DJANGO_SECRET_KEY, CORE_TEMPLATE_DIR, POSTGRES_DB_PASSWORD
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = DJANGO_SECRET_KEY
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -59,7 +58,7 @@ ROOT_URLCONF = 'crm.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [CORE_TEMPLATE_DIR],
+        'DIRS': [os.getenv('CORE_TEMPLATE_DIR')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'gestaoclientesDIO',
         'USER': 'postgres',
-        'PASSWORD': POSTGRES_DB_PASSWORD,
+        'PASSWORD': os.getenv('POSTGRES_DB_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '5433',
     }
