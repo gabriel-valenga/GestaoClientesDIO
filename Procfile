@@ -1,2 +1,2 @@
-release: python manage.py migrate
+release: python crm/manage.py migrate
 web: gunicorn crm.wsgi --log-file -
