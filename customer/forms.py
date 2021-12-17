@@ -2,7 +2,7 @@ from django import forms
 from .models import Customer
 
 
-class DateInput(forms.DateInput(format='%Y-%m-%d')):
+class DateInput(forms.DateInput):
     input_type = 'date'
 
 
@@ -16,7 +16,8 @@ class CustomerForm(forms.ModelForm):
         error_messages={'max_length': 'Sobrenome não pode ter mais de 50 caracteres'}
     )
     email = forms.EmailField(label='Email')
-    birth_date = forms.DateField(label='Data de Nascimento', widget=DateInput())
+    birth_date = forms.DateField(label='Data de Nascimento',
+                                 widget=DateInput(format='%Y-%m-%d'))
     area_code = forms.RegexField(
         label='DDD',
         regex=r'^\+?1?[0-9]{2}$',
