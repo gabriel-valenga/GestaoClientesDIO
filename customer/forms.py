@@ -2,7 +2,7 @@ from django import forms
 from .models import Customer
 
 
-class DateInput(forms.DateInput):
+class DateInput(forms.DateInput(format='%Y-%m-%d')):
     input_type = 'date'
 
 
