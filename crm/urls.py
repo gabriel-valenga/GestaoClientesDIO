@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from django.contrib.auth import views as auth_views
+from crm.views import SignUpView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +27,7 @@ urlpatterns = [
         extra_context={'titulo': 'Autenticação'}), name='login'),
     path('logout/', auth_views.LogoutView.as_view(
         template_name='logout.html'), name='logout'),
+    path('signup/', SignUpView.as_view(), name='signup'),
+    path('passwordrecovery/', SignUpView.as_view(), name='password_recovery'),
     path('customer/', include('customer.urls'))
 ]

@@ -44,6 +44,11 @@
                         {% endif %}
                         <button type="submit" class="btn btn-black" value=" {{ next }}">Login</button>
 
+                        <div>
+                            <a href="{% url 'password_recovery' %}">Esqueceu a senha?</a>
+                            <p> Não tem conta? <a href="{% url 'signup' %}" class="link_cadastrar">Cadastre-se</a></p>
+                        </div>
+
                     </form>
                 </div>
             </div>
@@ -69,6 +74,10 @@
     footer {
         flex-shrink: none;
         margin-top: 2em;
+    }
+
+    .link_cadastrar {
+        font-size: 13px
     }
 </style>
 </html>
