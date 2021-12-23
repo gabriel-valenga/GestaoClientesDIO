@@ -13,6 +13,14 @@ class SignUpForm(UserCreationForm):
         label='Usuario',
         error_messages={'max_length': 'Nome não ´pode ter mais de 150 caracteres.'}
     )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput,
+        label='Senha'
+    )
+    password2 = forms.CharField(
+        widget=forms.PasswordInput,
+        label='Confirme a senha'
+    )
 
     class Meta:
         model = User
@@ -21,4 +29,8 @@ class SignUpForm(UserCreationForm):
             'first_name',
             'email',
             'password1',
+            'password2'
         ]
+
+    def form_valid(self, form):
+        return super().form_valid(form)
